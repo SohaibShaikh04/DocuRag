@@ -3,11 +3,20 @@
 import axios from "axios";
 import type { ChatRequest, ChatResponse, HealthResponse, UploadResponse } from "./types";
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+const RAW_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV
+    ? "http://localhost:8000"
+    : "https://docurag-backend-7aty.onrender.com");
+
+// Strip any trailing slashes to avoid double-slash route errors
+const BASE_URL = RAW_URL.replace(/\/+$/, "");
+
+console.log("[DocuRag API] Active backend URL:", BASE_URL);
 
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 60_000,
+  timeout: 120_000,
 });
 
 // ── Health ──────────────────────────────────────────────────────────────────
