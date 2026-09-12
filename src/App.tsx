@@ -1,11 +1,12 @@
-// src/App.tsx — Midnight Ember app shell with WebGL background, sidebar, and custom cursor
+// src/App.tsx
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import { useStore } from "./store/useStore";
-import { WebGLBackground } from "./components/WebGLBackground";
+import { SonarGrid } from "./components/SonarGrid";
 import { CustomCursor } from "./components/CustomCursor";
 import { Sidebar } from "./components/Sidebar";
+import { HeroView } from "./components/HeroView";
 import { UploadView } from "./components/UploadView";
 import { ChatView } from "./components/ChatView";
 
@@ -18,18 +19,15 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* WebGL liquid-metal background */}
-      <WebGLBackground />
-
-      {/* Custom amber ring cursor */}
+      <SonarGrid />
       <CustomCursor />
 
-      {/* App shell */}
       <div className="app-shell">
-        <Sidebar />
-        <main className="app-main">
-          {view === "upload" && <UploadView />}
-          {view === "chat" && <ChatView />}
+        {view !== "landing" && <Sidebar />}
+        <main className={`app-main ${view === "landing" ? "app-main--full" : ""}`}>
+          {view === "landing" && <HeroView />}
+          {view === "upload"  && <UploadView />}
+          {view === "chat"    && <ChatView />}
         </main>
       </div>
 
@@ -39,20 +37,20 @@ function App() {
         toastOptions={{
           duration: 4000,
           style: {
-            background: "rgba(22, 18, 10, 0.92)",
+            background: "rgba(16, 13, 7, 0.95)",
             backdropFilter: "blur(16px)",
-            color: "#e8e0d0",
-            border: "1px solid rgba(245, 158, 11, 0.2)",
-            borderRadius: "10px",
-            fontSize: "13.5px",
+            color: "#e8dfc8",
+            border: "1px solid rgba(245, 158, 11, 0.15)",
+            borderRadius: "8px",
+            fontSize: "13px",
             fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(245,158,11,0.08)",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.45)",
           },
           success: {
-            iconTheme: { primary: "#F59E0B", secondary: "rgba(22,18,10,0.9)" },
+            iconTheme: { primary: "#F59E0B", secondary: "rgba(16,13,7,0.95)" },
           },
           error: {
-            iconTheme: { primary: "#f87171", secondary: "rgba(22,18,10,0.9)" },
+            iconTheme: { primary: "#f87171", secondary: "rgba(16,13,7,0.95)" },
           },
         }}
       />

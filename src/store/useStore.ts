@@ -32,7 +32,7 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set) => ({
-  view: "upload",
+  view: "landing",
   setView: (view) => set({ view }),
 
   collectionId: null,
@@ -69,7 +69,7 @@ export const useStore = create<AppState>((set) => ({
 
   reset: () =>
     set({
-      view: "upload",
+      view: "landing",
       collectionId: null,
       filename: null,
       pdfFile: null,

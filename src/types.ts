@@ -1,6 +1,6 @@
 // src/types.ts — All shared TypeScript types for the application
 
-export type AppView = "upload" | "chat";
+export type AppView = "landing" | "upload" | "chat";
 
 export interface SourceChunk {
   page: number;

@@ -36,7 +36,7 @@ export function Sidebar() {
             <circle cx="11" cy="11" r="1.5" fill="#F59E0B" />
           </svg>
         </div>
-        <span className="sidebar-brand">Ember</span>
+        <span className="sidebar-brand">DocuRAG</span>
       </div>
 
       {/* Nav */}
