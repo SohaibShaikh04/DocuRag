@@ -117,7 +117,7 @@ export function Sidebar() {
 
       {/* Bottom branding */}
       <div className="sidebar-footer">
-        <span>RAG · Powered by Groq</span>
+        <span>RAG · Made with ❤️ - Sohaib Shaikh</span>
       </div>
     </aside>
   );
